@@ -530,7 +530,10 @@ class UpSet:
         self._plot_bars(ax, data=data, colors=colors, title=title, use_labels=True)
 
         handles, labels = ax.get_legend_handles_labels()
-        ax.legend()            
+        if self._horizontal:
+            ax.legend(list(reversed(handles)), list(reversed(labels)))
+        else:
+            ax.legend()
 
     def add_stacked_bars(self, by, sum_over=None, colors=None, elements=3, title=None):
         """Add a stacked bar chart over subsets when :func:`plot` is called.
