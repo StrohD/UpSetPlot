@@ -382,7 +382,7 @@ def from_contents(contents, data=None, id_column="id"):
     df = pd.concat(cat_series, axis=1, sort=False)
     if id_column in df.columns:
         raise ValueError("A category cannot be named %r" % id_column)
-    df.fillna(False, inplace=True)
+    df = df.fillna(0)
     cat_names = list(df.columns)
 
     if data is not None:
